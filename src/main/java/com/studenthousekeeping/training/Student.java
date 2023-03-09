@@ -1,4 +1,7 @@
 package com.studenthousekeeping.training;
+import java.time.LocalDate;
+import java.time.Period;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,13 +25,19 @@ public class Student {
     private String department;
     @Column(name = "Grade")
     private String grade;
+    @Column(name = "DateOfBirth")
+    private LocalDate date_of_birth;   
 
-    public Student(String first_name, String last_name, String department, String grade) {
+    
+
+    public Student(String first_name, String last_name, String department, String grade, LocalDate date_of_birth) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.department = department;
         this.grade = grade;
+        this.date_of_birth = date_of_birth;
     }
+    
 
     public int getId() {
         return id;
@@ -69,5 +78,18 @@ public class Student {
     public void setGrade(String grade) {
         this.grade = grade;
     }
-    
+
+    public LocalDate getDate_of_birth() {
+        return date_of_birth;
+    }
+
+    public void setDate_of_birth(LocalDate date_of_birth) {
+        this.date_of_birth = date_of_birth;
+    }
+
+
+    public int getAge() {
+        LocalDate today = LocalDate.now();
+        return Period.between(date_of_birth, today).getYears();
+    }
 }
