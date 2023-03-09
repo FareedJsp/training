@@ -1,4 +1,4 @@
-package com.studenthousekeeping.training;
+package com.studenthousekeeping.training.Student;
 import java.time.LocalDate;
 import java.time.Period;
 
